@@ -8,27 +8,31 @@
     <title>Odin Form Project</title>
   </head>
   <body>
-    <div class="background">
-      <img src="/odin-lined.png" />
-      <h1>ODIN</h1>
-    </div>
-    <div class="content">
-      <div class="descriptionText">
-        <p>
-          This is not a real online service!You know you need something like
-          this in your life to help you realize your deepest dreams.
-        </p>
-        <!-- use newline? or  p tag for this? -->
-        <p>Sign up now to get started</p>
-        <p>You know you want to.</p>
-      </div>
-      <form id="user-registration">
-        <h2>Let's do this!</h2>
-        <div class="input">
-          <label for="first-name">First Name</label>
-          <input type="text" name="first-name" id="first-name" />
+    <div class="container">
+      <div class="background">
+        <div class="logo">
+          <img src="/odin-lined.png" />
+          <h1>ODIN</h1>
         </div>
-        <div class="input">
+      </div>
+      <div class="content">
+        <div class="descriptionText">
+          This is not a real online service! You know you need something like
+          this in your life to help you realize your deepest dreams.
+          <br />
+          Sign up now to get started.
+          <br />
+          <br />
+          You know you want to.
+          <!-- use newline? or  p tag for this? -->
+        </div>
+        <form id="user-registration">
+          <h2>Let's do this!</h2>
+          <div class="input">
+            <label for="first-name">First Name</label>
+            <input type="text" name="first-name" id="first-name" />
+          </div>
+          <div class="input">
             <label for="last-name">Last Name</label>
             <input type="text" name="last-name" id="last-name" />
           </div>
@@ -49,11 +53,12 @@
             <input type="text" name="confirm-password" id="confirm-pwd" />
             <!-- what will happen when both password fields have the same name? -->
           </div>
-      </form>
-      <!-- Button inside or outside the form? -->
-      <button type="submit" form="user-registration">Create Account</button>
-      <div class="logIn-alt">
-        Already have an account? <a href="#">Log in</a>
+        </form>
+        <!-- Button inside or outside the form? -->
+        <button type="submit" form="user-registration">Create Account</button>
+        <div class="logIn-alt">
+          Already have an account? <a href="#">Log in</a>
+        </div>
       </div>
     </div>
   </body>

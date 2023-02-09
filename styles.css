@@ -1,0 +1,59 @@
+@font-face {
+    font-family: "norseBold";
+    src: url(/Norse-Bold.otf);
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+.container{
+    display: flex;
+    height: 100vh;
+    width: 80vw;
+    margin: auto;
+}
+
+.background{
+    background-image: url(/background.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    flex-basis: 30vw;
+}
+.content{
+    flex:1;
+}
+
+
+.logo{
+    margin-top: 20vh;
+    padding: 0.5rem;
+    align-items: center;
+    background-color: rgba(43, 43, 43, 0.606);
+    display: flex;
+     justify-content: center;
+}
+.logo h1{
+    
+    color: white;
+    font-family: "norseBold";
+    font-size: 4rem;
+}
+.logo img{
+   height: 5rem;
+}
+.content{
+    background-color: #f9fafb;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+#user-registration{
+    background-color: white;
+    box-shadow: 0px 4px 4px 0px #c3c3c3;
+}
+
+
