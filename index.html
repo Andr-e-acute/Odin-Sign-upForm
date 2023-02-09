@@ -1,13 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
     <title>Odin Form Project</title>
-</head>
-<body>
-    <h1>Allsetup?</h1>
-</body>
+  </head>
+  <body>
+    <div class="background">
+      <img src="/odin-lined.png" />
+      <h1>ODIN</h1>
+    </div>
+    <div class="content">
+      <div class="descriptionText">
+        <p>
+          This is not a real online service!You know you need something like
+          this in your life to help you realize your deepest dreams.
+        </p>
+        <!-- use newline? or  p tag for this? -->
+        <p>Sign up now to get started</p>
+        <p>You know you want to.</p>
+      </div>
+      <form id="user-registration">
+        <h2>Let's do this!</h2>
+        <div class="input">
+          <label for="first-name">First Name</label>
+          <input type="text" name="first-name" id="first-name" />
+        </div>
+        <div class="input">
+            <label for="last-name">Last Name</label>
+            <input type="text" name="last-name" id="last-name" />
+          </div>
+          <div class="input">
+            <label for="email">Email</label>
+            <input type="email" name="email" id="email" />
+          </div>
+          <div class="input">
+            <label for="tel">Phone number</label>
+            <input type="text" name="phone-number" id="tel" />
+          </div>
+          <div class="input">
+            <label for="pwd">Password</label>
+            <input type="text" name="password" id="pwd" />
+          </div>
+          <div class="input">
+            <label for="pwd">Confirm Password</label>
+            <input type="text" name="confirm-password" id="confirm-pwd" />
+            <!-- what will happen when both password fields have the same name? -->
+          </div>
+      </form>
+      <!-- Button inside or outside the form? -->
+      <button type="submit" form="user-registration">Create Account</button>
+      <div class="logIn-alt">
+        Already have an account? <a href="#">Log in</a>
+      </div>
+    </div>
+  </body>
 </html>
