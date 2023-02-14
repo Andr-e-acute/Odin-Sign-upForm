@@ -88,6 +88,14 @@
 }
 .input input{
     max-width:80%;
+    font-size: 1.5rem;
+    border:1px solid #E5E7EB;
+    border-radius: 3px;
+}
+.input input:focus{
+    outline:2px solid blue;
+    /* change this outline color when invalid ok too */
+    box-shadow: 4px 4px 5px rgba(0, 0, 0, 0.342);
 }
 
 
@@ -104,6 +112,7 @@
 }
 .sm-text{
 font-size: 1rem;
-font-weight: 300;
-/* italic */
+font-weight: normal;
+font-style: italic;
+
 }

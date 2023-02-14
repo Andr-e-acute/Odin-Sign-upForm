@@ -24,7 +24,7 @@
           <br />
           <br />
           You know you want to.
-          <!-- use newline? or  p tag for this? -->
+       
         </div>
         <form id="user-registration">
           <p>Let's do this!</p>
@@ -43,7 +43,7 @@
           </div>
           <div class="input">
             <label for="tel">Phone number</label>
-            <input type="text" name="phone-number" id="tel" />
+            <input type="tel" name="phone-number" id="tel" inputmode="tel" />
           </div>
           <div class="input">
             <label for="pwd">Password*</label>
@@ -52,10 +52,11 @@
           <div class="input">
             <label for="pwd">Confirm Password*</label>
             <input type="text" name="confirm-password" id="confirm-pwd" required/>
-            <!-- what will happen when both password fields have the same name? -->
+            
           </div>
         </form>
         <!-- Button inside or outside the form? -->
+        <!-- aria-describedby for all input elements that should have a min requirements? (password? name and last name should not have any? email is kind of already described with the email type )  -->
         <div class="submit-sec">
         <button type="submit" form="user-registration">Create Account</button>
             <div class="logIn-alt">
