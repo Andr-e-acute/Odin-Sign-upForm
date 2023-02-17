@@ -76,11 +76,9 @@
 #user-registration p{
     grid-column-start:span 2;
 }
-.input{
-    display: flex;
-    flex-direction:column;
-}
+
 .input label{
+    display: block;
     font-size: 0.8rem;
     color: #545454;
     letter-spacing: 0.1rem;
@@ -100,7 +98,7 @@
 
 
 .content button{
-    background-color: #596D48;
+      background-color: #596D48;
     color: white;
     border: none;
     font: inherit;
