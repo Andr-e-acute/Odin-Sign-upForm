@@ -95,7 +95,14 @@
     /* change this outline color when invalid ok too */
     box-shadow: 4px 4px 5px rgba(0, 0, 0, 0.342);
 }
-
+.inputError{
+    outline:2px solid red;
+}
+.inputError +.errorMessage{
+    margin-top: 5px;
+    font-size: 0.8rem;
+    color:red;
+}
 
 .content button{
       background-color: #596D48;

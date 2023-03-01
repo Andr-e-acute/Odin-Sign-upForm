@@ -26,7 +26,8 @@
           <br />
           You know you want to.
         </div>
-        <form id="user-registration">
+
+        <form id="user-registration" >
           <p>Let's do this!</p>
           <p class="sm-text">All fields marked with * are required</p>
           <div class="input">
@@ -45,11 +46,21 @@
               id="email"
               required
               aria-required="true"
+              autocomplete="email"
             />
+            <div class="errorMessage"></div>
           </div>
           <div class="input">
             <label for="tel">Phone number</label>
-            <input type="tel" name="phone-number" id="tel" inputmode="tel" pattern="[\d -+]+"/>
+            <input
+              type="tel"
+              name="phone-number"
+              id="tel"
+              inputmode="tel"
+              pattern="[\d -+]+"
+              autocomplete="tel"
+            />
+            <div class="errorMessage"></div>
           </div>
           <div class="input">
             <label for="pwd">Password*</label>
@@ -61,17 +72,19 @@
               aria-required="true"
               autocomplete="new-password"
             />
+            <div class="errorMessage"></div>
           </div>
           <div class="input">
-            <label for="pwd">Confirm Password*</label>
+            <label for="repeatPwd">Confirm Password*</label>
             <input
               type="password"
               name="password"
-              id="confirm-pwd"
+              id="repeatPwd"
               required
               aria-required="true"
               autocomplete="new-password"
             />
+            <div class="errorMessage"></div>
           </div>
         </form>
         <!-- Button inside or outside the form? -->
