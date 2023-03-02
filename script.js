@@ -3,51 +3,77 @@ const form = document.getElementById("user-registration");
 const email = document.getElementById("email");
 const emailError = document.querySelector("#email + .errorMessage");
 const tel = document.getElementById("tel");
+const telError = document.querySelector("#tel + .errorMessage");
 const pwd = document.getElementById("pwd");
 const repeatPwd = document.getElementById("repeatPwd");
 
-function correctInput(e) {
-  e.target.classList.add("visited");
-  e.target.classList.remove("inputError");
-}
-function wrongInput(e) {
-  e.target.classList.add("inputError");
-  e.target.classList.add("visited");
-}
-
-function createEmailError(e) {
+function checkInput(e) {
+  let input = e.target;
+  let errorMessage = input.nextElementSibling;
+ 
   //constantly check if user corrects error
-  if (email.validity.valid) {
-    correctInput(e);
-    emailError.textContent = "";
+  if (input.validity.valid) {
+    input.classList.add("visited");
+    input.classList.remove("inputError");
+    errorMessage.textContent = "";
   }
-  //visited=user had visited and now creates an error, error creations gets aggressive
-  //or user leves field
-  else if (email.classList.contains("visited") || e.type == "blur") {
-    wrongInput(e);
 
-    if (email.validity.valueMissing) {
-      emailError.innerHTML =
-        "*required <br> You need to enter an email address. ";
-    } else if (email.validity.typeMismatch) {
-      emailError.innerHTML = `Entered value needs to be an email address.<br>
-                            for Example: firstname@domain.com`;
+  //visited: user had visited and now creates an error, error creations gets aggressive
+  //or user leaves field
+  else if (input.classList.contains("visited") || e.type == "blur") {
+    input.classList.add("inputError");
+    input.classList.add("visited");
+    switch (input.id) {
+      case "email":
+        createEmailError(input, errorMessage);
+        break;
+      case "tel":
+        createTelError(input, errorMessage);
+        break;
+      default:
+        errorMessage.textContent="error wrong input"
+        break;
     }
   }
 }
 
-email.addEventListener("input", (e) => {
-  createEmailError(e);
-});
+function createEmailError(input, errorMessage) {
+  if (input.validity.valueMissing) {
+    errorMessage.innerHTML =
+      "*required <br> You need to enter an email address. ";
+  } else if (input.validity.typeMismatch) {
+    // there is a bug/annoying think when the user types a dot it is then an error
 
-// when user leaves field create Error Message
-email.addEventListener("blur", createEmailError
-);
+    errorMessage.innerHTML = `Entered value needs to be an email address.<br>
+                          for Example: firstname@domain.com`;
+  }
+  else{
+    errorMessage.innerHTML = `please enter an email address.<br>
+    for Example: firstname@domain.com`
+}
+}
+function createTelError(input, errorMessage){
+  if(input.validity.patternMismatch){
+    if(telNumErrorCounter>3){
+      errorMessage.innerHTML="only Enter numbers <br>None number deleted!"
+      input.value=input.value.replace(/[^0-9]/g, "")
+    }
+    else{
+      errorMessage.textContent="only Enter numbers"
+      telNumErrorCounter++
+    }
+  }
+  else{
+    errorMessage.textContent="Please Enter a telephone number or leave empty."
+  }
+}
+email.addEventListener("input", checkInput);
+email.addEventListener("blur", checkInput);
 
 //is their a simple non global way?
 let telNumErrorCounter = 0;
-
-
+tel.addEventListener("input", checkInput);
+tel.addEventListener("blur", checkInput);
 
 // //create error when user first
 // tel.addEventListener("blur",removeNonNumeric)
