@@ -13,8 +13,7 @@
 
 .container{
     display: flex;
-    height: 100vh;
-    /* width: 80vw; */
+    min-height: 100vh;
     margin: auto;
 }
 
@@ -48,9 +47,6 @@
 }
 .content{
     background-color: #f9fafb; 
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
     font-size: 1.5rem;
     font-weight: bold;
 }
@@ -121,11 +117,35 @@ font-weight: normal;
 font-style: italic;
 
 }
-.pwdRequirements{
-    padding: 10px;
-    outline:2px solid blue;
-    list-style: none;
-    border-radius: 3px;
-    grid-column: span 2;
-    }
+#pwdRequirements{
+    display: none;
+    font-size: 1rem;
+    color: #545454; 
+    grid-column: span 2;  
+    
+}
+#pwdRequirements h3{
+    font-size: 1rem;
+    color: #545454;
+    letter-spacing: 0.1rem; 
+}
 
+#pwdRequirements .pwdWrong::before{
+    font-size: 1.5rem;
+    font-weight: bold;
+    content: "X ";
+    color: red;
+}
+#pwdRequirements .pwdCorrect::before{
+    font-size: 1.5rem;
+    font-weight: bold;
+    content: "✓ ";
+    color: green;
+  
+}
+#pwdRequirements.visible{
+   display: initial;
+}
+#pwdRequirements:focus{
+    display: initial;
+}

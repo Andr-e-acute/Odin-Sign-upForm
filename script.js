@@ -8,11 +8,12 @@ const telError = document.querySelector("#tel + .errorMessage");
 
 const pwd = document.getElementById("pwd");
 const repeatPwd = document.getElementById("repeatPwd");
+let pwdRequirements = document.getElementsByClassName("pwdpwdRequirement");
 
 function checkInput(e) {
   let input = e.target;
   let errorMessage = input.nextElementSibling;
- 
+
   //constantly check if user corrects error
   if (input.validity.valid) {
     input.classList.add("visited");
@@ -32,8 +33,9 @@ function checkInput(e) {
       case "tel":
         createTelError(input, errorMessage);
         break;
+
       default:
-        errorMessage.textContent="error wrong input"
+        errorMessage.textContent = "error wrong input";
         break;
     }
   }
@@ -47,30 +49,44 @@ function createEmailError(input, errorMessage) {
 
     errorMessage.innerHTML = `Entered value needs to be an email address.<br>
                           for Example: firstname@domain.com`;
-  }
-  else{
+  } else {
     errorMessage.innerHTML = `please enter an email address.<br>
-    for Example: firstname@domain.com`
-}
-}
-function createTelError(input, errorMessage){
-  if(input.validity.patternMismatch){
-    if(telNumErrorCounter>3){
-      errorMessage.innerHTML="only Enter numbers <br>None number deleted!"
-      input.value=input.value.replace(/[^0-9]/g, "")
-    }
-    else{
-      errorMessage.textContent="only Enter numbers"
-      telNumErrorCounter++
-    }
-  }
-  else{
-    errorMessage.textContent="Please Enter a telephone number or leave empty."
+    for Example: firstname@domain.com`;
   }
 }
-function createEmailError(input,errorMessage) {
- 
+function createTelError(input, errorMessage) {
+  if (input.validity.patternMismatch) {
+    if (telNumErrorCounter > 3) {
+      errorMessage.innerHTML = "only Enter numbers <br>None number deleted!";
+      input.value = input.value.replace(/[^0-9]/g, "");
+    } else {
+      errorMessage.textContent = "only Enter numbers";
+      telNumErrorCounter++;
+    }
+  } else {
+    errorMessage.textContent =
+      "Please Enter a telephone number or leave empty.";
+  }
 }
+
+function checkPwd(e) {
+  console.log(pwdRequirements);
+  input = e.target;
+  if (input.validity.valid) {
+    input.classList.remove("inputError");
+    [...pwdRequirements].map((pwdRequirement) => {
+      pwdRequirement.classList = "pwdCorrect";
+    });
+
+    if (e.type == "blur") {
+      document.getElementById("pwdRequirements").classList.remove("visible");
+    }
+  } else {
+    input.classList.add("inputError");
+    document.getElementById("pwdRequirements").classList.add("visible");
+  }
+}
+
 email.addEventListener("input", checkInput);
 email.addEventListener("blur", checkInput);
 
@@ -79,7 +95,8 @@ let telNumErrorCounter = 0;
 tel.addEventListener("input", checkInput);
 tel.addEventListener("blur", checkInput);
 
-pwd.addEventListener("input", checkInput);
-pwd.addEventListener("blur", checkInput);
- 
-
+pwd.addEventListener("input", checkPwd);
+pwd.addEventListener("blur", checkPwd);
+pwd.addEventListener("focus", () =>
+  document.getElementById("pwdRequirements").classList.add("visible")
+);

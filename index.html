@@ -71,7 +71,7 @@
               required
               aria-required="true"
               autocomplete="new-password"
-              minlength="8"
+              pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{8,}$"
             />
             <div class="errorMessage"></div>
           </div>
@@ -87,13 +87,13 @@
             />
             <div class="errorMessage"></div>
           </div>
-          <div class="pwdRequirements">
-            <h3>Password Requirements</h3>
+          <div id="pwdRequirements">
+            <h3>Password Requirements:</h3>
           
-            <div id="pwdLength">Must contain at least 8 characters</div>
-              <div>Must contain one uppercase character</div>
-              <div>Must contain one lowercase character</div>
-              <div>Must contain one number</div>
+            <div id="pwdLength" class="pwdRequirement">Must contain at least 8 characters</div>
+              <div id="pwdUp" class="pwdRequirement">Must contain one uppercase character</div>
+              <div id="pwdLow" class="pwdRequirement">Must contain one lowercase character</div>
+              <div id="pwdNum" class ="pwdRequirement">Must contain one number</div>
 
           </div>
         </form>
