@@ -8,7 +8,7 @@ const telError = document.querySelector("#tel + .errorMessage");
 
 const pwd = document.getElementById("pwd");
 const repeatPwd = document.getElementById("repeatPwd");
-let pwdRequirements = document.getElementsByClassName("pwdpwdRequirement");
+let pwdRequirements = document.getElementsByClassName("pwdRequirement");
 
 function checkInput(e) {
   let input = e.target;
@@ -70,20 +70,47 @@ function createTelError(input, errorMessage) {
 }
 
 function checkPwd(e) {
-  console.log(pwdRequirements);
+
   input = e.target;
   if (input.validity.valid) {
+   
     input.classList.remove("inputError");
     [...pwdRequirements].map((pwdRequirement) => {
-      pwdRequirement.classList = "pwdCorrect";
+      pwdRequirement.classList.add("pwdCorrect");
     });
 
     if (e.type == "blur") {
       document.getElementById("pwdRequirements").classList.remove("visible");
     }
-  } else {
+  } 
+  else {
     input.classList.add("inputError");
     document.getElementById("pwdRequirements").classList.add("visible");
+
+    [...pwdRequirements].map((pwdRequirement) => {
+      pwdRequirement.classList.add("pwdWrong")
+      pwdRequirement.classList.remove("pwdCorrect");
+    });
+    if(/[a-z]/.test(input.value)){
+      document.getElementById("pwdLow").classList.remove("pwdWrong")
+      document.getElementById("pwdLow").classList.add("pwdCorrect")
+    }
+    if(/[A-Z]/.test(input.value)){
+      document.getElementById("pwdUp").classList.remove("pwdWrong")
+      document.getElementById("pwdUp").classList.add("pwdCorrect")
+    }
+    if(/[0-9]/.test(input.value)){
+      document.getElementById("pwdNum").classList.remove("pwdWrong")
+      document.getElementById("pwdNum").classList.add("pwdCorrect")
+    }
+    if(input.value.length>=8){
+      document.getElementById("pwdLength").classList.remove("pwdWrong")
+      document.getElementById("pwdLength").classList.add("pwdCorrect")
+    }
+    
+    
+    
+    
   }
 }
 
@@ -100,3 +127,4 @@ pwd.addEventListener("blur", checkPwd);
 pwd.addEventListener("focus", () =>
   document.getElementById("pwdRequirements").classList.add("visible")
 );
+
