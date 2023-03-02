@@ -1,151 +1,138 @@
 @font-face {
-    font-family: "norseBold";
-    src: url(/Norse-Bold.otf);
+  font-family: "norseBold";
+  src: url(/Norse-Bold.otf);
 }
 
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: Arial, Helvetica, sans-serif
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
-
-.container{
-    display: flex;
-    min-height: 100vh;
-    margin: auto;
+.container {
+  display: flex;
+  min-height: 100vh;
+  margin: auto;
 }
 
-.background{
-    background-image: url(/background.jpg);
-    background-size: cover;
-    background-repeat: no-repeat;
-    flex-basis: 40vw;
+.background {
+  background-image: url(/background.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  flex-basis: 40vw;
 }
-.content{
-    flex:1;
-}
-
-
-.logo{
-    margin-top: 20vh;
-    padding: 0.5rem;
-    align-items: center;
-    background-color: rgba(43, 43, 43, 0.606);
-    display: flex;
-    justify-content: center;
-}
-.logo h1{
-    
-    color: white;
-    font-family: "norseBold";
-    font-size: 6rem;
-}
-.logo img{
-   height: 7rem;
-}
-.content{
-    background-color: #f9fafb; 
-    font-size: 1.5rem;
-    font-weight: bold;
-}
-.content>*{
-   padding-left: 30px;
-   margin-top: 40px;
+.content {
+  flex: 1;
 }
 
-.descriptionText{
-    max-width: 58ch;
-    margin: 60px 60px 60px 0px;
+.logo {
+  margin-top: 20vh;
+  padding: 0.5rem;
+  align-items: center;
+  background-color: rgba(43, 43, 43, 0.606);
+  display: flex;
+  justify-content: center;
+}
+.logo h1 {
+  color: white;
+  font-family: "norseBold";
+  font-size: 6rem;
+}
+.logo img {
+  height: 7rem;
+}
+.content {
+  background-color: #f9fafb;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+.content > * {
+  padding-left: 30px;
+  margin-top: 40px;
 }
 
-
-#user-registration{
-    background-color: white;
-    box-shadow: 0px 4px 4px 0px #c3c3c3;
-    padding: 30px 30px;
-    display: grid;
-    grid-template-columns: repeat(2,auto);
-    row-gap: 1rem;
-}
-#user-registration p{
-    grid-column-start:span 2;
+.descriptionText {
+  max-width: 58ch;
+  margin: 60px 60px 60px 0px;
 }
 
-.input label{
-    display: block;
-    font-size: 0.8rem;
-    color: #545454;
-    letter-spacing: 0.1rem;
-    text-transform: uppercase;
+#user-registration {
+  background-color: white;
+  box-shadow: 0px 4px 4px 0px #c3c3c3;
+  padding: 30px 30px;
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  row-gap: 1rem;
 }
-.input input{
-    max-width:80%;
-    font-size: 1.5rem;
-    border:1px solid #E5E7EB;
-    border-radius: 3px;
-}
-.input input:focus{
-    outline:2px solid blue;
-    /* change this outline color when invalid ok too */
-    box-shadow: 4px 4px 5px rgba(0, 0, 0, 0.342);
-}
-.inputError{
-    outline:2px solid red;
-}
-.inputError +.errorMessage{
-    margin-top: 5px;
-    font-size: 0.8rem;
-    color:red;
+#user-registration p {
+  grid-column-start: span 2;
 }
 
-.content button{
-      background-color: #596D48;
-    color: white;
-    border: none;
-    font: inherit;
-    /* font-size: inherit;
-    font-weight: inherit; */
-    height: 2em; 
-    padding: 0 2em;
-    
+.input label {
+  display: block;
+  font-size: 0.8rem;
+  color: #545454;
+  letter-spacing: 0.1rem;
+  text-transform: uppercase;
 }
-.sm-text{
-font-size: 1rem;
-font-weight: normal;
-font-style: italic;
-
+.input input {
+  max-width: 80%;
+  font-size: 1.5rem;
+  border: 1px solid #e5e7eb;
+  border-radius: 3px;
 }
-#pwdRequirements{
-    display: none;
-    font-size: 1rem;
-    color: #545454; 
-    grid-column: span 2;  
-    
+.input input:focus {
+  outline: 2px solid blue;
+  box-shadow: 4px 4px 5px rgba(0, 0, 0, 0.342);
 }
-#pwdRequirements h3{
-    font-size: 1rem;
-    color: #545454;
-    letter-spacing: 0.1rem; 
+.inputError {
+  outline: 2px solid red;
+}
+.inputError + .errorMessage {
+  margin-top: 5px;
+  font-size: 0.8rem;
+  color: red;
 }
 
-#pwdRequirements .pwdWrong::before{
-    font-size: 1.5rem;
-    font-weight: bold;
-    content: "X ";
-    color: red;
+.content button {
+  background-color: #596d48;
+  color: white;
+  border: none;
+  font: inherit;
+  height: 2em;
+  padding: 0 2em;
 }
-#pwdRequirements .pwdCorrect::before{
-    font-size: 1.5rem;
-    font-weight: bold;
-    content: "✓ ";
-    color: green;
-  
+.sm-text {
+  font-size: 1rem;
+  font-weight: normal;
+  font-style: italic;
 }
-#pwdRequirements.visible{
-   display: initial;
+#pwdRequirements {
+  display: none;
+  font-size: 1rem;
+  color: #545454;
+  grid-column: span 2;
 }
-#pwdRequirements:focus{
-    display: initial;
+#pwdRequirements h3 {
+  font-size: 1rem;
+  color: #545454;
+  letter-spacing: 0.1rem;
+}
+
+#pwdRequirements .pwdWrong::before {
+  font-size: 1.5rem;
+  font-weight: bold;
+  content: "X ";
+  color: red;
+}
+#pwdRequirements .pwdCorrect::before {
+  font-size: 1.5rem;
+  font-weight: bold;
+  content: "✓ ";
+  color: green;
+}
+#pwdRequirements.visible,
+#pwdRequirements:focus {
+  display: initial;
 }

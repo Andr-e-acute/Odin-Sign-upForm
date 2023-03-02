@@ -8,7 +8,7 @@ const telError = document.querySelector("#tel + .errorMessage");
 
 const pwd = document.getElementById("pwd");
 const repeatPwd = document.getElementById("repeatPwd");
-let pwdRequirements = document.getElementsByClassName("pwdRequirement");
+const pwdRequirements = document.getElementsByClassName("pwdRequirement");
 
 function checkInput(e) {
   let input = e.target;
@@ -45,7 +45,7 @@ function createEmailError(input, errorMessage) {
     errorMessage.innerHTML =
       "*required <br> You need to enter an email address. ";
   } else if (input.validity.typeMismatch) {
-    // there is a bug/annoying think when the user types a dot it is then an error
+    // there is a bug/annoyance when typing a dot it is an error fix it?
 
     errorMessage.innerHTML = `Entered value needs to be an email address.<br>
                           for Example: firstname@domain.com`;
@@ -70,7 +70,7 @@ function createTelError(input, errorMessage) {
 }
 
 function checkPwd(e) {
-
+  checkPwdSame()
   input = e.target;
   if (input.validity.valid) {
    
@@ -91,6 +91,7 @@ function checkPwd(e) {
       pwdRequirement.classList.add("pwdWrong")
       pwdRequirement.classList.remove("pwdCorrect");
     });
+    //todo the  remove the repetition?
     if(/[a-z]/.test(input.value)){
       document.getElementById("pwdLow").classList.remove("pwdWrong")
       document.getElementById("pwdLow").classList.add("pwdCorrect")
@@ -107,17 +108,26 @@ function checkPwd(e) {
       document.getElementById("pwdLength").classList.remove("pwdWrong")
       document.getElementById("pwdLength").classList.add("pwdCorrect")
     }
-    
-    
-    
-    
+ 
   }
 }
 
+function checkPwdSame(){
+  if(repeatPwd.value!==pwd.value){
+    repeatPwd.classList.add("inputError")
+    repeatPwd.nextElementSibling.textContent="* Passwords do not match ";
+    repeatPwd.setCustomValidity("* Passwords do not match ")
+  }
+  else{
+    repeatPwd.classList.remove("inputError")
+    repeatPwd.nextElementSibling.textContent="";
+    repeatPwd.setCustomValidity("")
+  }
+}
 email.addEventListener("input", checkInput);
 email.addEventListener("blur", checkInput);
 
-//is their a simple non global way?
+//todo is their a simple non global way?
 let telNumErrorCounter = 0;
 tel.addEventListener("input", checkInput);
 tel.addEventListener("blur", checkInput);
@@ -128,3 +138,7 @@ pwd.addEventListener("focus", () =>
   document.getElementById("pwdRequirements").classList.add("visible")
 );
 
+repeatPwd.addEventListener("input", checkPwdSame)
+
+//todo add show password 
+//todo clean comment polish
