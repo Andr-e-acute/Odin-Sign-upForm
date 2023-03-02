@@ -2,8 +2,10 @@ const form = document.getElementById("user-registration");
 
 const email = document.getElementById("email");
 const emailError = document.querySelector("#email + .errorMessage");
+
 const tel = document.getElementById("tel");
 const telError = document.querySelector("#tel + .errorMessage");
+
 const pwd = document.getElementById("pwd");
 const repeatPwd = document.getElementById("repeatPwd");
 
@@ -36,7 +38,6 @@ function checkInput(e) {
     }
   }
 }
-
 function createEmailError(input, errorMessage) {
   if (input.validity.valueMissing) {
     errorMessage.innerHTML =
@@ -67,6 +68,9 @@ function createTelError(input, errorMessage){
     errorMessage.textContent="Please Enter a telephone number or leave empty."
   }
 }
+function createEmailError(input,errorMessage) {
+ 
+}
 email.addEventListener("input", checkInput);
 email.addEventListener("blur", checkInput);
 
@@ -75,16 +79,7 @@ let telNumErrorCounter = 0;
 tel.addEventListener("input", checkInput);
 tel.addEventListener("blur", checkInput);
 
-// //create error when user first
-// tel.addEventListener("blur",removeNonNumeric)
+pwd.addEventListener("input", checkInput);
+pwd.addEventListener("blur", checkInput);
+ 
 
-// function removeNonNumeric() {
-//   console.log(tel.validity.valid)
-
-//   //todo is this  a good idea?
-//   // prevent input of non numbers? or use a pattern with a description.
-//     // this.value = this.value.replace(/[^0-9]/g, "");
-//     //todo add an output error after 3*times non number?
-//   }
-
-//   //check on every

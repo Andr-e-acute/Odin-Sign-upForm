@@ -121,3 +121,11 @@ font-weight: normal;
 font-style: italic;
 
 }
+.pwdRequirements{
+    padding: 10px;
+    outline:2px solid blue;
+    list-style: none;
+    border-radius: 3px;
+    grid-column: span 2;
+    }
+

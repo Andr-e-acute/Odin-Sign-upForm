@@ -71,20 +71,30 @@
               required
               aria-required="true"
               autocomplete="new-password"
+              minlength="8"
             />
             <div class="errorMessage"></div>
           </div>
           <div class="input">
             <label for="repeatPwd">Confirm Password*</label>
             <input
-              type="password"
-              name="password"
-              id="repeatPwd"
-              required
-              aria-required="true"
-              autocomplete="new-password"
+            type="password"
+            name="password"
+            id="repeatPwd"
+            required
+            aria-required="true"
+            autocomplete="new-password"
             />
             <div class="errorMessage"></div>
+          </div>
+          <div class="pwdRequirements">
+            <h3>Password Requirements</h3>
+          
+            <div id="pwdLength">Must contain at least 8 characters</div>
+              <div>Must contain one uppercase character</div>
+              <div>Must contain one lowercase character</div>
+              <div>Must contain one number</div>
+
           </div>
         </form>
         <!-- Button inside or outside the form? -->
