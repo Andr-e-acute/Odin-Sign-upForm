@@ -1,14 +1,17 @@
 const form = document.getElementById("user-registration");
 
 const email = document.getElementById("email");
-const emailError = document.querySelector("#email + .errorMessage");
 
 const tel = document.getElementById("tel");
-const telError = document.querySelector("#tel + .errorMessage");
 
 const pwd = document.getElementById("pwd");
 const repeatPwd = document.getElementById("repeatPwd");
 const pwdRequirements = document.getElementsByClassName("pwdRequirement");
+const pwdErrorField = document.querySelector("#repeatPwd ~ .errorMessage");
+
+// const showPwds = document.querySelectorAll(".showPwd");
+const showPwds = document.getElementsByClassName("showPwd");
+const hidePwds = document.getElementsByClassName("hidePwd");
 
 function checkInput(e) {
   let input = e.target;
@@ -70,10 +73,9 @@ function createTelError(input, errorMessage) {
 }
 
 function checkPwd(e) {
-  checkPwdSame()
+  checkPwdSame();
   input = e.target;
   if (input.validity.valid) {
-   
     input.classList.remove("inputError");
     [...pwdRequirements].map((pwdRequirement) => {
       pwdRequirement.classList.add("pwdCorrect");
@@ -82,48 +84,67 @@ function checkPwd(e) {
     if (e.type == "blur") {
       document.getElementById("pwdRequirements").classList.remove("visible");
     }
-  } 
-  else {
+  } else {
     input.classList.add("inputError");
     document.getElementById("pwdRequirements").classList.add("visible");
 
     [...pwdRequirements].map((pwdRequirement) => {
-      pwdRequirement.classList.add("pwdWrong")
+      pwdRequirement.classList.add("pwdWrong");
       pwdRequirement.classList.remove("pwdCorrect");
     });
     //todo the  remove the repetition?
-    if(/[a-z]/.test(input.value)){
-      document.getElementById("pwdLow").classList.remove("pwdWrong")
-      document.getElementById("pwdLow").classList.add("pwdCorrect")
+    if (/[a-z]/.test(input.value)) {
+      document.getElementById("pwdLow").classList.remove("pwdWrong");
+      document.getElementById("pwdLow").classList.add("pwdCorrect");
     }
-    if(/[A-Z]/.test(input.value)){
-      document.getElementById("pwdUp").classList.remove("pwdWrong")
-      document.getElementById("pwdUp").classList.add("pwdCorrect")
+    if (/[A-Z]/.test(input.value)) {
+      document.getElementById("pwdUp").classList.remove("pwdWrong");
+      document.getElementById("pwdUp").classList.add("pwdCorrect");
     }
-    if(/[0-9]/.test(input.value)){
-      document.getElementById("pwdNum").classList.remove("pwdWrong")
-      document.getElementById("pwdNum").classList.add("pwdCorrect")
+    if (/[0-9]/.test(input.value)) {
+      document.getElementById("pwdNum").classList.remove("pwdWrong");
+      document.getElementById("pwdNum").classList.add("pwdCorrect");
     }
-    if(input.value.length>=8){
-      document.getElementById("pwdLength").classList.remove("pwdWrong")
-      document.getElementById("pwdLength").classList.add("pwdCorrect")
+    if (input.value.length >= 8) {
+      document.getElementById("pwdLength").classList.remove("pwdWrong");
+      document.getElementById("pwdLength").classList.add("pwdCorrect");
     }
- 
   }
 }
 
-function checkPwdSame(){
-  if(repeatPwd.value!==pwd.value){
-    repeatPwd.classList.add("inputError")
-    repeatPwd.nextElementSibling.textContent="* Passwords do not match ";
-    repeatPwd.setCustomValidity("* Passwords do not match ")
-  }
-  else{
-    repeatPwd.classList.remove("inputError")
-    repeatPwd.nextElementSibling.textContent="";
-    repeatPwd.setCustomValidity("")
+function checkPwdSame() {
+  if (repeatPwd.value !== pwd.value) {
+    repeatPwd.classList.add("inputError");
+    pwdErrorField.textContent = "* Passwords do not match ";
+    repeatPwd.setCustomValidity("* Passwords do not match ");
+  } else {
+    repeatPwd.classList.remove("inputError");
+    pwdErrorField.textContent = "";
+    repeatPwd.setCustomValidity("");
   }
 }
+function showPwd(e) {
+  e.preventDefault();
+  const pwdInput = e.target.parentElement.querySelector("input");
+  pwdInput.type = "text";
+  e.target.classList = "hidePwd";
+ 
+  [...hidePwds].forEach((element) => {
+    element.addEventListener("click", hidePwd,{once:true});
+  });
+}
+function hidePwd(e) {
+  
+  e.preventDefault();
+  const pwdInput = e.target.parentElement.querySelector("input");
+  pwdInput.type = "password";
+  e.target.classList = "showPwd";
+  
+  [...showPwds].forEach((element) => {
+    element.addEventListener("click", showPwd,{once:true});
+  });
+}
+
 email.addEventListener("input", checkInput);
 email.addEventListener("blur", checkInput);
 
@@ -138,7 +159,9 @@ pwd.addEventListener("focus", () =>
   document.getElementById("pwdRequirements").classList.add("visible")
 );
 
-repeatPwd.addEventListener("input", checkPwdSame)
+repeatPwd.addEventListener("input", checkPwdSame);
 
-//todo add show password 
-//todo clean comment polish
+//this is a mess.
+[...showPwds].forEach((element) => {
+  element.addEventListener("click", showPwd,{once:true});
+});

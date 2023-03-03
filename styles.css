@@ -89,7 +89,7 @@
 .inputError {
   outline: 2px solid red;
 }
-.inputError + .errorMessage {
+.inputError ~ .errorMessage {
   margin-top: 5px;
   font-size: 0.8rem;
   color: red;
@@ -136,3 +136,17 @@
 #pwdRequirements:focus {
   display: initial;
 }
+.showPwd,
+.hidePwd{
+    position: relative;
+    left:-2.5rem;
+    font-weight: 100;
+    color: #545454;
+}
+/* quick and dirty solution dedicated symbol would be better */
+.hidePwd:after{
+    content: 'X';
+    position:relative;
+    left:-1.25rem
+}
+

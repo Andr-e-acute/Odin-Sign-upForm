@@ -65,15 +65,16 @@
           <div class="input">
             <label for="pwd">Password*</label>
             <input
-              type="password"
-              name="password"
-              id="pwd"
-              required
-              aria-required="true"
-              autocomplete="new-password"
-              pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{8,}$"
-            />👁
-            <div class="errorMessage"></div>
+            type="password"
+            name="password"
+            id="pwd"
+            required
+            aria-required="true"
+            autocomplete="new-password"
+            pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{8,}$"
+            />
+            <span class="showPwd">👁</span>
+           
           </div>
           <div class="input">
             <label for="repeatPwd">Confirm Password*</label>
@@ -84,7 +85,8 @@
             required
             aria-required="true"
             autocomplete="new-password"
-            />👁
+            />
+            <span class="showPwd">👁</span>
             <div class="errorMessage"></div>
           </div>
           <div id="pwdRequirements">
