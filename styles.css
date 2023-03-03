@@ -143,7 +143,7 @@
     font-weight: 100;
     color: #545454;
 }
-/* quick and dirty solution dedicated symbol would be better */
+/* dedicated symbol would be better */
 .hidePwd:after{
     content: 'X';
     position:relative;

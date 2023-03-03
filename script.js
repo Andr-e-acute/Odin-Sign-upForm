@@ -1,17 +1,31 @@
 const form = document.getElementById("user-registration");
-
 const email = document.getElementById("email");
-
 const tel = document.getElementById("tel");
-
 const pwd = document.getElementById("pwd");
 const repeatPwd = document.getElementById("repeatPwd");
-const pwdRequirements = document.getElementsByClassName("pwdRequirement");
+const pwdRequirements = document.querySelectorAll(".pwdRequirement");
 const pwdErrorField = document.querySelector("#repeatPwd ~ .errorMessage");
-
-// const showPwds = document.querySelectorAll(".showPwd");
 const showPwds = document.getElementsByClassName("showPwd");
 const hidePwds = document.getElementsByClassName("hidePwd");
+
+email.addEventListener("input", checkInput);
+email.addEventListener("blur", checkInput);
+
+let telNumErrorCounter = 0;
+tel.addEventListener("input", checkInput);
+tel.addEventListener("blur", checkInput);
+
+pwd.addEventListener("input", checkPwd);
+pwd.addEventListener("blur", checkPwd);
+pwd.addEventListener("focus", () =>
+  document.getElementById("pwdRequirements").classList.add("visible")
+);
+
+repeatPwd.addEventListener("input", checkPwdSame);
+
+[...showPwds].forEach((element) => {
+  element.addEventListener("click", showPwd, { once: true });
+});
 
 function checkInput(e) {
   let input = e.target;
@@ -48,8 +62,6 @@ function createEmailError(input, errorMessage) {
     errorMessage.innerHTML =
       "*required <br> You need to enter an email address. ";
   } else if (input.validity.typeMismatch) {
-    // there is a bug/annoyance when typing a dot it is an error fix it?
-
     errorMessage.innerHTML = `Entered value needs to be an email address.<br>
                           for Example: firstname@domain.com`;
   } else {
@@ -92,7 +104,7 @@ function checkPwd(e) {
       pwdRequirement.classList.add("pwdWrong");
       pwdRequirement.classList.remove("pwdCorrect");
     });
-    //todo the  remove the repetition?
+
     if (/[a-z]/.test(input.value)) {
       document.getElementById("pwdLow").classList.remove("pwdWrong");
       document.getElementById("pwdLow").classList.add("pwdCorrect");
@@ -128,40 +140,18 @@ function showPwd(e) {
   const pwdInput = e.target.parentElement.querySelector("input");
   pwdInput.type = "text";
   e.target.classList = "hidePwd";
- 
+
   [...hidePwds].forEach((element) => {
-    element.addEventListener("click", hidePwd,{once:true});
+    element.addEventListener("click", hidePwd, { once: true });
   });
 }
 function hidePwd(e) {
-  
   e.preventDefault();
   const pwdInput = e.target.parentElement.querySelector("input");
   pwdInput.type = "password";
   e.target.classList = "showPwd";
-  
+
   [...showPwds].forEach((element) => {
-    element.addEventListener("click", showPwd,{once:true});
+    element.addEventListener("click", showPwd, { once: true });
   });
 }
-
-email.addEventListener("input", checkInput);
-email.addEventListener("blur", checkInput);
-
-//todo is their a simple non global way?
-let telNumErrorCounter = 0;
-tel.addEventListener("input", checkInput);
-tel.addEventListener("blur", checkInput);
-
-pwd.addEventListener("input", checkPwd);
-pwd.addEventListener("blur", checkPwd);
-pwd.addEventListener("focus", () =>
-  document.getElementById("pwdRequirements").classList.add("visible")
-);
-
-repeatPwd.addEventListener("input", checkPwdSame);
-
-//this is a mess.
-[...showPwds].forEach((element) => {
-  element.addEventListener("click", showPwd,{once:true});
-});
